@@ -1,8 +1,9 @@
 class ErrorHandler extends Error {
-    constructor(message, statusCode){
-        super(message)
+    //must pass this constructor details as arguments when funcitn call
+    constructor(message, statusCode) {
+        super(message)//sending data to parent class
         this.statusCode = statusCode;
-        Error.captureStackTrace(this, this.constructor)
+        Error.captureStackTrace(this, this.constructor)//to find error exactly 
     }
 }
 

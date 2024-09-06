@@ -21,7 +21,7 @@ export default function Header() {
       <div className="col-12 col-md-3">
         <div className="navbar-brand">
           <Link to="/">
-            <img style={{ maxHeight: '80px', padding: 0, margin: 0 }} width="130px" alt='JVLcart Logo' src="/images/logo.png" />
+            <img style={{ maxHeight: '80px', padding: 0, margin: 0 }} width="130px" alt='RSDrawz Logo' src="/images/logo.png" />
           </Link>
         </div>
       </div>

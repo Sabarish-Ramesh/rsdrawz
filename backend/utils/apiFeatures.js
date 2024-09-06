@@ -23,7 +23,7 @@ class APIFeatures {
         //removing fields from query
         const removeFields = ['keyword', 'limit', 'page'];
         removeFields.forEach( field => delete queryStrCopy[field]);
-        
+        //in json easily change content  
         let queryStr = JSON.stringify(queryStrCopy);
         queryStr =  queryStr.replace(/\b(gt|gte|lt|lte)/g, match => `$${match}`)
 

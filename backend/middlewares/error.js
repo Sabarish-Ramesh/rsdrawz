@@ -1,3 +1,4 @@
+//handler function
 module.exports = (err, req, res, next) =>{
     err.statusCode  = err.statusCode || 500;
 
@@ -17,14 +18,15 @@ module.exports = (err, req, res, next) =>{
        
 
         if(err.name == "ValidationError") {
-            message = Object.values(err.errors).map(value => value.message)
+            //object.values return array of values 
+            message = Object.values(err.errors).map(value => value.message)//return arr
             error = new Error(message)
             err.statusCode = 400
         }
 
         if(err.name == 'CastError'){
             message = `Resource not found: ${err.path}` ;
-            error = new Error(message)
+            error = new Error(message)//but this convert arr to str
             err.statusCode = 400
         }
 

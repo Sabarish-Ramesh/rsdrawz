@@ -4,13 +4,14 @@ const catchAsyncError = require('../middlewares/catchAsyncError')
 const APIFeatures = require('../utils/apiFeatures');
 
 //Get Products - /api/v1/products
+//this is handler function so I have req,res,next
 exports.getProducts = catchAsyncError(async (req, res, next)=>{
     const resPerPage = 4;
     
     let buildQuery = () => {
         return new APIFeatures(Product.find(), req.query).search().filter()
     }
-    
+    //to wait and get data used async await
     const filteredProductsCount = await buildQuery().query.countDocuments({})
     const totalProductsCount = await Product.countDocuments({});
     let productsCount = totalProductsCount;
@@ -59,6 +60,7 @@ exports.getSingleProduct = catchAsyncError(async(req, res, next) => {
     const product = await Product.findById(req.params.id).populate('reviews.user','name email');
 
     if(!product) {
+        //error object has been created and must return here
         return next(new ErrorHandler('Product not found', 400));
     }
 
@@ -102,8 +104,8 @@ exports.updateProduct = catchAsyncError(async (req, res, next) => {
     }
 
     product = await Product.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-        runValidators: true
+        new: true,//to display the updates product detail page
+        runValidators: true//to run validations we gave  this
     })
 
     res.status(200).json({

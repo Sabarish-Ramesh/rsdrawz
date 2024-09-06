@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+//mongoose schema middleware used to make changes before save in db
 const productSchema = new mongoose.Schema({
     name: {
         type: String,

@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Please enter password'],
-        maxlength: [6, 'Password cannot exceed 6 characters'],
+        maxlength: [24, 'Password cannot exceed 24 characters'],
         select: false
     },
     avatar: {
@@ -35,14 +35,14 @@ const userSchema = new mongoose.Schema({
         default: Date.now
     }
 })
-
+//before saving we do hash the password using bcrypt
 userSchema.pre('save', async function (next){
-    if(!this.isModified('password')){
+    if(!this.isModified('password')){//this function will call only when password is chamged
         next();
     }
     this.password  = await bcrypt.hash(this.password, 10)
 })
-
+//using user id create a token (session ) for the user
 userSchema.methods.getJwtToken = function(){
    return jwt.sign({id: this.id}, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_TIME
@@ -54,14 +54,14 @@ userSchema.methods.isValidPassword = async function(enteredPassword){
 }
 
 userSchema.methods.getResetToken = function(){
-    //Generate Token
+    //Generatating Token
     const token = crypto.randomBytes(20).toString('hex');
 
-    //Generate Hash and set to resetPasswordToken
+    //Generate Hash using SHA and set to resetPasswordToken
    this.resetPasswordToken =  crypto.createHash('sha256').update(token).digest('hex');
 
    //Set token expire time
-    this.resetPasswordTokenExpire = Date.now() + 30 * 60 * 1000;
+    this.resetPasswordTokenExpire = Date.now() + 30 * 60 * 1000;//30 mins given 
 
     return token
 }

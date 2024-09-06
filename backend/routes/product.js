@@ -1,6 +1,6 @@
 const express = require('express');
 const { getProducts, newProduct, getSingleProduct, updateProduct, deleteProduct, createReview, getReviews, deleteReview, getAdminProducts } = require('../controllers/productController');
-const router = express.Router();
+const router = express.Router();//object created for route function
 const {isAuthenticatedUser, authorizeRoles } = require('../middlewares/authenticate');
 const multer = require('multer');
 const path = require('path')
@@ -14,8 +14,9 @@ const upload = multer({storage: multer.diskStorage({
     }
 }) })
 
-
+//after middleware in app.js -> comes here then go to controllers
 router.route('/products').get( getProducts);
+//chain function
 router.route('/product/:id')
                             .get(getSingleProduct);
             
