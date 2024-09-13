@@ -32,12 +32,18 @@ This project is a full-stack e-commerce web application built using the MERN sta
 ## File Structure
 
 ### Backend
-The backend folder is organized into different modules:
-backend/ │ ├── models/ # Mongoose schemas for MongoDB collections ├── controllers/ # Functions for handling HTTP requests and responses ├── middleware/ # Custom middleware (e.g., authentication) ├── routes/ # API routes for various resources ├── utils/ # Utility functions such as error handling ├── .env # Environment variables file (not to be pushed to version control) └── server.js # Entry point for the Express.js server
+- **models**: Having all my mongodb schema structure.
+- **controllers**: Having my handler function.
+- **middleware**: Having all my middleware functions.
+- **routes**: Routes to maintain the handlers.
+- **utils**: Extra utils functions which can be frequently reused.
+
 
 ### Frontend
-The frontend folder contains all the client-side code:
-frontend/ │ ├── actions/ # Redux action creators ├── components/ # Reusable React components ├── reducers/ # Redux reducers for managing state ├── App.js # Main React component ├── index.js # Entry point for React app └── styles/ # CSS files for styling components
+- **actions**: Having all my mongodb schema structure.
+- **components**: Having my handler function.
+- **slices**: Having all my middleware functions.
+- **store**: Routes to maintain the handlers.
 
 ## Environment Variables
 To run this project, you will need to add the following environment variables to your `.env` file in the backend directory:
