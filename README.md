@@ -66,11 +66,18 @@ Make sure you have the following installed:
    git clone <repository-url>
    cd <project-directory>
 
-2. To run the bacckend:
+2.To install:
+   ```bash
+   cd backend
+   npm i
+   cd frontend
+   npm i
+
+3. To run the bacckend:
    ```bash
    npm run dev -->To run in development mode
    npm run prod --> To run in production mode
 
-3.To run the frontend:
+4.To run the frontend:
 ```bash
    npm start
