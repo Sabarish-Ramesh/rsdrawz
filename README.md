@@ -66,10 +66,11 @@ Make sure you have the following installed:
    git clone <repository-url>
    cd <project-directory>
 
-2.To install:
+2. Clone the repository:
    ```bash
    cd backend
    npm i
+   cd ../
    cd frontend
    npm i
 
